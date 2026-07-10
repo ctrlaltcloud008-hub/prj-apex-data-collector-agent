@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+CLAUDE.md
+.megamemory/
+.scratch/
+.agents/
+.codex/
+.claude/
+AGENTS.md
+WEEK-PLAN.md
+.python-version
+terraform.tfvars
+*.tfvars

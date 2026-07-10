@@ -1,0 +1,42 @@
+[project]
+name = "prj-apex-data-collector-agent"
+version = "0.1.0"
+description = "Deterministic evidence router between the Diagnosis Agent and the read-only operational MCPs for the Apex Investigator"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.137.1",
+    "fastmcp>=3.4.2",
+    "google-cloud-pubsub>=2.39.0",
+    "opentelemetry-api>=1.43.0",
+]
+
+[project.scripts]
+data-collector = "data_collector.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/data_collector"]
+
+[tool.ruff]
+src = ["src"]
+line-length = 80
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "ruff>=0.15.15",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
